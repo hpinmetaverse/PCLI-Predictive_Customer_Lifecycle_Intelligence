@@ -26,65 +26,39 @@ def explore_data(df: pd.DataFrame) -> None:
 
 def preprocess_data(df: pd.DataFrame) -> tuple:
     df = df.copy()
-
     df.drop('customerID', axis=1, inplace=True)
-
     df['TotalCharges'] = pd.to_numeric(df['TotalCharges'], errors='coerce')
-    
     mask = df['TotalCharges'].isna()
     df.loc[mask, 'TotalCharges'] = df.loc[mask, 'MonthlyCharges'] * df.loc[mask, 'tenure']
-
-  
     binary_cols = [
         'Partner', 'Dependents', 'PhoneService', 'PaperlessBilling', 'Churn'
     ]
     for col in binary_cols:
         df[col] = (df[col] == 'Yes').astype(int)
-
-  
     df['gender'] = (df['gender'] == 'Female').astype(int)
-
     service_cols = [
         'MultipleLines', 'OnlineSecurity', 'OnlineBackup',
         'DeviceProtection', 'TechSupport', 'StreamingTV', 'StreamingMovies'
     ]
     for col in service_cols:
         df[col] = df[col].apply(lambda x: 1 if x == 'Yes' else 0)
-
     df = pd.get_dummies(df, columns=['InternetService', 'Contract', 'PaymentMethod'], drop_first=False)
-
     if 'InternetService_DSL' in df.columns:
         df.drop('InternetService_DSL', axis=1, inplace=True)
- 
     if 'Contract_Month-to-month' in df.columns:
         df.drop('Contract_Month-to-month', axis=1, inplace=True)
-
     if 'PaymentMethod_Bank transfer (automatic)' in df.columns:
         df.drop('PaymentMethod_Bank transfer (automatic)', axis=1, inplace=True)
-
     X = df.drop('Churn', axis=1)
     y = df['Churn']
-
     print(f"\nPreprocessing complete!")
     print(f"Features: {X.shape[1]} columns")
     print(f"Feature names: {list(X.columns)}")
     print(f"Class distribution: {y.value_counts().to_dict()}")
-
     return X, y, list(X.columns)
 
 
 def apply_smote(X_train: np.ndarray, y_train: np.ndarray, random_state: int = 42):
-    """
-    Apply SMOTE to handle class imbalance in training data.
-
-    Args:
-        X_train: Training features
-        y_train: Training labels
-        random_state: Random seed for reproducibility
-
-    Returns:
-        (X_resampled, y_resampled)
-    """
     smote = SMOTE(random_state=random_state)
     X_res, y_res = smote.fit_resample(X_train, y_train)
 
@@ -96,23 +70,9 @@ def apply_smote(X_train: np.ndarray, y_train: np.ndarray, random_state: int = 42
 
 
 def get_train_test_split(X, y, test_size: float = 0.2, random_state: int = 42, apply_oversampling: bool = True):
-    """
-    Split data into train/test sets and optionally apply SMOTE.
-
-    Args:
-        X: Feature DataFrame or array
-        y: Target series or array
-        test_size: Proportion of test set
-        random_state: Random seed
-        apply_oversampling: Whether to apply SMOTE on training data
-
-    Returns:
-        (X_train, X_test, y_train, y_test)
-    """
     X_train, X_test, y_train, y_test = train_test_split(
         X, y, test_size=test_size, random_state=random_state, stratify=y
     )
-
     print(f"\nTrain/Test Split:")
     print(f"  Train: {X_train.shape[0]} samples")
     print(f"  Test:  {X_test.shape[0]} samples")
