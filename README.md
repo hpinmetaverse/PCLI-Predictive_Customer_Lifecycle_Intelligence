@@ -1,32 +1,9 @@
 # Predictive Customer Churn Analysis using ML
-### Minor Project Part-II (CS215) — B.Tech VI Sem (A.Y. 2025-2026)
-### Jaypee University of Engineering & Technology, Guna (MP)
-### Department of Computer Science & Engineering
-
----
-
-## Project Details
-
-| Field | Details |
-|---|---|
-| **Project No.** | AK7 |
-| **Course** | Minor Project Part-II (CS215) |
-| **Semester** | B.Tech VI Sem (A.Y. 2025-2026) |
-| **Institution** | JUET, Guna (MP) |
-
-## Team Members
-
-| S.No. | Name | Enrollment No. |
-|---|---|---|
-| 1 | Harsh Vardhan Chauhan | 231B131 |
-| 2 | Himanshu S. Patil | 231B141 |
-| 3 | Rudransh Srivastava | 231B274 |
-
 ---
 
 ## Project Overview
 
-This project focuses on **Predictive Customer Churn Analysis using Machine Learning**. Customer churn — the loss of clients to competitors — is a critical metric in subscription-based businesses like telecom or streaming services.
+This project focuses on **Predictive Customer Churn Analysis using Machine Learning**. Customer churn - the loss of clients to competitors - is a critical metric in subscription-based businesses like telecom or streaming services.
 
 The goal is to build an interpretable ML pipeline that:
 - Predicts whether a customer is likely to churn
@@ -78,7 +55,7 @@ The goal is to build an interpretable ML pipeline that:
 |---|---|
 | Logistic Regression | Baseline linear classifier |
 | Decision Tree | Rule-based classifier |
-| **Random Forest** | Ensemble model — **best performing** (used in deployment) |
+| **Random Forest** | Ensemble model - **best performing** (used in deployment) |
 | XGBoost | Gradient boosting classifier |
 | MLP (PyTorch) | Custom multi-layer perceptron neural network |
 
@@ -155,28 +132,12 @@ jupyter notebook notebooks/main.ipynb
 
 ---
 
-## Weekly Progress Summary
-
-| Week | Report No. | Duration | Key Activities |
-|---|---|---|---|
-| 1 | Report #1 | 06 Jan – 10 Jan 2026 | Finalized project roadmap, studied existing approaches, initiated GitHub repo |
-| 2 | Report #2 | 12 Jan – 17 Jan 2026 | Data preprocessing, EDA (key factors & trends), framed churn as binary classification |
-| 3 | Report #3 | 19 Jan – 24 Jan 2026 | Identified patterns & anomalies, selected features, handled missing/inconsistent data |
-| 4 | Report #4 | 26 Jan – 31 Jan 2026 | Feature engineering, implemented baseline churn models, evaluated initial performance |
-| 5 | Report #5 | 02 Feb – 07 Feb 2026 | Feature selection & imbalance handling (SMOTE), evaluated models using accuracy, precision, recall, ROC-AUC |
-| 6 | Report #6 | 23 Feb – 28 Feb 2026 | Implemented Logistic Regression, Decision Tree, Random Forest; evaluated with recall & F1; analyzed feature importance |
-| 7 | Report #7 | 02 Mar – 07 Mar 2026 | Model tuning & optimization, selected best-performing model, created visualizations & insights |
-| 8 | Report #8 | 09 Mar – 14 Mar 2026 | Tested trained ML model with accuracy & metrics, analyzed predictions for key churn factors |
-| 9 | Report #9 | 16 Mar – 21 Mar 2026 | Compared ML models, prepared comparative visualizations, prepared for model demo |
-
----
-
 ## Results
 
 - **Best Model**: Random Forest Classifier
 - **Key Churn Predictors**: Contract type, Tenure, Monthly Charges, Internet Service type
 - **XAI Integration**: SHAP force plots provide per-customer explanation; LIME provides local model transparency
-- **Deployment**: Flask web app with real-time churn probability gauge and SHAP explanation
+- **Deployment**: FastAPI web app with real-time churn probability gauge and SHAP explanation
 
 ---
 
@@ -188,7 +149,7 @@ jupyter notebook notebooks/main.ipynb
 | **ML Libraries** | scikit-learn, XGBoost, imbalanced-learn (SMOTE) |
 | **Deep Learning** | PyTorch |
 | **XAI** | SHAP, LIME |
-| **Web Framework** | Flask |
+| **Web Framework** | FastAPI|
 | **Data Processing** | pandas, NumPy |
 | **Visualization** | Matplotlib, Seaborn |
 | **Notebook** | Jupyter |
@@ -197,8 +158,7 @@ jupyter notebook notebooks/main.ipynb
 
 ## References
 
-1. IBM Telco Customer Churn Dataset — [Kaggle](https://www.kaggle.com/blastchar/telco-customer-churn)
-2. SHAP: Lundberg & Lee (2017) — "A Unified Approach to Interpreting Model Predictions"
-3. LIME: Ribeiro et al. (2016) — "Why Should I Trust You?"
-4. Scikit-learn documentation — https://scikit-learn.org
-5. Reference implementation: [ayushabrol13/Explainable-Customer-Churn-Prediction](https://github.com/ayushabrol13/Explainable-Customer-Churn-Prediction)
+1. IBM Telco Customer Churn Dataset - [Kaggle](https://www.kaggle.com/blastchar/telco-customer-churn)
+2. SHAP: Lundberg & Lee (2017) -"A Unified Approach to Interpreting Model Predictions"
+3. LIME: Ribeiro et al. (2016) -"Why Should I Trust You?"
+4. Scikit-learn documentation - https://scikit-learn.org
